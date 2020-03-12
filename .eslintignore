@@ -3,3 +3,7 @@
 node_modules
 public
 build
+storybook-static
+**/*.svg
+**/*.json
+*.md
