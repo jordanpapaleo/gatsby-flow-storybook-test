@@ -26,31 +26,40 @@ type PropsT = DefaultComponentProps & {
 }
 
 const BlogList = (props: PropsT) => {
-  const { 'data-qa-id': dataQaId, className, posts, style = {} } = props
+  const {
+    'data-qa-id': dataQaId,
+    className,
+    posts,
+    style = {},
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'BlogList' })
 
   return (
-    <div className={classnames('BlogList-component', className)} style={style} data-qa-id={qaId}>
-      {posts.map((post, i) => {
-        const title = post.frontmatter.title || post.fields.slug
-        return (
-          <li key={post.fields.slug}>
-            <article>
-              <h3>
-                <Link to={post.fields.slug}>{title}</Link>
-              </h3>
+    <div
+      className={classnames('BlogList-component', className)}
+      data-qa-id={qaId}
+      style={style}
+    >
+      <ul>
+        {posts.map((post, i) => {
+          const title = post.frontmatter.title || post.fields.slug
+          return (
+            <li key={post.fields.slug}>
+              <article>
+                <h2>
+                  <Link to={post.fields.slug}>{title}</Link>
+                </h2>
 
-              <small>{post.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
+                <small>{post.frontmatter.date}</small>
+                <p dangerouslySetInnerHTML={{
                   __html: post.frontmatter.description || post.excerpt,
-                }}
-              />
-              <small>{post.frontmatter.tags}</small>
-            </article>
-          </li>
-        )
-      })}
+                }} />
+                <small>{post.frontmatter.tags}</small>
+              </article>
+            </li>
+          )
+        })}
+      </ul>
 
       <style jsx>{styles}</style>
     </div>

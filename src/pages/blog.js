@@ -16,13 +16,22 @@ type PropsT = DefaultComponentProps & {
 }
 
 const Blog = (props: PropsT) => {
-  const { 'data-qa-id': dataQaId, className, data, style = {} } = props
+  const {
+    'data-qa-id': dataQaId,
+    className,
+    data,
+    style = {},
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'Blog' })
   const posts = get(data, 'allMarkdownRemark.edges', []).map((post) => post.node)
 
   return (
-    <AppLayout className={classnames('Blog-component', className)} style={style} data-qa-id={qaId}>
-      <h1>Blogs</h1>
+    <AppLayout
+      className={classnames('Blog-component', className)}
+      data-qa-id={qaId}
+      heading="Blogs"
+      style={style}
+    >
       <BlogList posts={posts} show={5} />
       <style jsx>{styles}</style>
     </AppLayout>

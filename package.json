@@ -132,13 +132,5 @@
     "raw-loader": "2.0.0",
     "react-markdown": "4.1.0",
     "start-server-and-test": "1.10.9"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "npm run fix"
   }
 }

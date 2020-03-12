@@ -2,12 +2,16 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
-    }
+    },
   },
   extends: ['prettier', 'standard', 'react-app'],
   env: {
     browser: true,
     es6: true,
+  },
+  globals: {
+    cy: true, // for cypress
+    context: true, // for cypress
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -15,17 +19,20 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
-    'camelcase': ['error', {
-      ignoreDestructuring: true,
-      properties: 'never'
-    }],
+    camelcase: [
+      'error',
+      {
+        ignoreDestructuring: true,
+        properties: 'never',
+      },
+    ],
     'comma-dangle': ['error', 'always-multiline'],
     'array-bracket-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
     'space-before-function-paren': ['error', 'never'],
   },
-  plugins: ["jsx-a11y", "prettier"]
+  plugins: ['jsx-a11y', 'prettier'],
 }

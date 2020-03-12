@@ -13,11 +13,24 @@ type PropsT = DefaultComponentProps & {
 }
 
 const Button = (props: PropsT) => {
-  const { 'data-qa-id': dataQaId, children, className = '', style = {}, type = 'button', ...otherProps } = props
+  const {
+    'data-qa-id': dataQaId,
+    children,
+    className = '',
+    style = {},
+    type = 'button',
+    ...otherProps
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'Button' })
 
   return (
-    <button className={classnames('Button-component', className)} data-qa-id={qaId} style={style} type={type} {...otherProps}>
+    <button
+      className={classnames('Button-component', className)}
+      data-qa-id={qaId}
+      style={style}
+      type={type}
+      {...otherProps}
+    >
       {children}
       <style jsx>{styles}</style>
     </button>

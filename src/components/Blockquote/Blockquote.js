@@ -13,11 +13,21 @@ type PropsT = DefaultComponentProps & {
 }
 
 const Blockquote = (props: PropsT) => {
-  const { 'data-qa-id': dataQaId, className, style = {}, children, caption } = props
+  const {
+    'data-qa-id': dataQaId,
+    caption,
+    children,
+    className,
+    style = {},
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'Blockquote' })
 
   return (
-    <figure className={classnames('Blockquote-component', className)} style={style} data-qa-id={qaId}>
+    <figure
+      className={classnames('Blockquote-component', className)}
+      data-qa-id={qaId}
+      style={style}
+    >
       <blockquote>"{children}"</blockquote>
       {caption && <figcaption>- {caption}</figcaption>}
       <style jsx>{styles}</style>

@@ -11,12 +11,20 @@ import type { DefaultComponentProps } from 'common/types/general.types'
 type PropsT = DefaultComponentProps & {}
 
 const About = (props: PropsT) => {
-  const { 'data-qa-id': dataQaId, className, style = {} } = props
+  const {
+    'data-qa-id': dataQaId,
+    className,
+    style = {},
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'About' })
 
   return (
-    <AppLayout className={classnames('About-component', className)} style={style} data-qa-id={qaId}>
-      <h1>About</h1>
+    <AppLayout
+      className={classnames('About-component', className)}
+      data-qa-id={qaId}
+      heading="About"
+      style={style}
+    >
       <style jsx>{styles}</style>
     </AppLayout>
   )

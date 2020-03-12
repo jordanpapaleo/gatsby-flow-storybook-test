@@ -22,16 +22,36 @@ type Props = DefaultComponentProps & {
 */
 
 const Link = (props: Props) => {
-  const { 'data-qa-id': dataQaId, children, className = '', href, style = {}, to, ...otherProps } = props
+  const {
+    'data-qa-id': dataQaId,
+    children,
+    className = '',
+    href,
+    style = {},
+    to,
+    ...otherProps
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'Link' })
 
   return to ? (
-    <GatsbyLink className={classnames('Link-component', className)} data-qa-id={qaId} style={style} to={to} {...otherProps}>
+    <GatsbyLink
+      className={classnames('Link-component', className)}
+      data-qa-id={qaId}
+      style={style}
+      to={to}
+      {...otherProps}
+    >
       {children}
       <style jsx>{styles}</style>
     </GatsbyLink>
   ) : (
-    <a className={classnames('Link-component', className)} data-qa-id={qaId} href={href} style={style} {...otherProps}>
+    <a
+      className={classnames('Link-component', className)}
+      data-qa-id={qaId}
+      href={href}
+      style={style}
+      {...otherProps}
+    >
       {children}
       <style jsx>{styles}</style>
     </a>

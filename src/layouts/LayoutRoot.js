@@ -68,13 +68,15 @@ const LayoutRoot = (props: DefaultComponentProps) => {
   return (
     <DispatchContext.Provider value={dispatch}>
       <ResponsiveContext.Provider value={responsiveState}>
-        <div className={classnames('LayoutRoot-component', className)} style={style} data-qa-id={qaId}>
+        <main
+          className={classnames('LayoutRoot-component', className)}
+          data-qa-id={qaId}
+          style={style}
+        >
           {children}
-          <style jsx global>
-            {styleDefaults}
-          </style>
+          <style jsx global>{styleDefaults}</style>
           <style jsx>{styles}</style>
-        </div>
+        </main>
       </ResponsiveContext.Provider>
     </DispatchContext.Provider>
   )

@@ -3,9 +3,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import type { DefaultComponentProps } from 'common/types/general.types'
-
-type PropsT = DefaultComponentProps & {
+type PropsT = {
   description?: string,
   lang?: string,
   meta?: Array<{}>,
@@ -13,7 +11,12 @@ type PropsT = DefaultComponentProps & {
 }
 
 function Seo(props: PropsT) {
-  const { description = '', lang = 'en', meta = [], title } = props
+  const {
+    description = '',
+    lang = 'en',
+    meta = [],
+    title,
+  } = props
   const { site } = useStaticQuery(
     graphql`
       query {

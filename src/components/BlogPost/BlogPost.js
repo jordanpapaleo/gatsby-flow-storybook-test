@@ -34,14 +34,25 @@ type PropsT = DefaultComponentProps & {
 }
 
 const BlogPost = (props: PropsT) => {
-  const { 'data-qa-id': dataQaId, pageContext, className, style = {}, data } = props
+  const {
+    'data-qa-id': dataQaId,
+    className,
+    data,
+    pageContext,
+    style = {},
+  } = props
   const qaId = toQaId({ parentId: dataQaId, componentId: 'BlogPost' })
   const post = data.markdownRemark
+  const desc = post.frontmatter.description || post.excerpt
   const { previous, next } = pageContext
 
   return (
-    <LayoutRoot className={classnames('BlogPost-component', className)} style={style} data-qa-id={qaId}>
-      <Seo title={post.frontmatter.title} description={post.frontmatter.description || post.excerpt} />
+    <LayoutRoot
+      className={classnames('BlogPost-component', className)}
+      data-qa-id={qaId}
+      style={style}
+    >
+      <Seo title={post.frontmatter.title} description={desc} />
 
       <header>
         <div>{post.frontmatter.date}</div>

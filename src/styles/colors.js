@@ -1,7 +1,13 @@
 // @flow
+
+import {
+  darken,
+  lighten,
+} from 'polished'
+
 // https://www.htmlcsscolor.com
 const dodgerBlue = '#008AE5'
-const dodgerBlue30 = 'rgba(0, 138, 229, 0.70)'
+const dodgerBlue30 = lighten(0.1, dodgerBlue)
 const deepSkyBlue = '#0DCCFF'
 // eslint-disable-next-line no-unused-vars
 const razzmatazz = '#FF0073'
@@ -18,7 +24,7 @@ const white = '#FFFFFF'
 const ghostWhite = '#F8F8FF'
 
 // Uses
-const brandPrimary = dodgerBlue
+const brandPrimary = darken(0.1, dodgerBlue) // Darkened for A11y
 const brandPrimary30 = dodgerBlue30
 const brandSecondary = deepSkyBlue
 const background = ghostWhite
