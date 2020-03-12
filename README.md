@@ -1,4 +1,4 @@
-# Boiler Plate
+# gatsby-flow-storybook-test
 
 ## Code Style
 
