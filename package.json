@@ -11,6 +11,8 @@
     "build:gatsby": "NODE_ENV=production gatsby build",
     "build:storybook": "build-storybook -c .storybook -o storybook",
     "build": "npm run build:gatsby; npm run build:storybook",
+    "cy:open": "$(npm bin)/cypress open",
+    "cy:run": "$(npm bin)/cypress run",
     "clean": "rimraf public .cache",
     "dev": "NODE_ENV=development gatsby develop",
     "fix:format": "$(npm bin)/prettier --write 'src/**/*.js'",
@@ -25,8 +27,8 @@
     "test:fe:unit": "$(npm bin)/jest -c ./jest.config.js",
     "test:fe:dev": "$(npm bin)/jest -c ./jest.config.js --watch",
     "test:fe:types": "$(npm bin)/flow",
-    "test:fe:e2e:dev": "$(npm bin)/cypress open",
-    "test:fe:e2e": "$(npm bin)/cypress run ",
+    "test:fe:e2e": "start-server-and-test dev http://localhost:8000 cy:open",
+    "test:fe:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "test": "npm run test:fe"
   },
   "repository": {
@@ -73,17 +75,21 @@
     "@storybook/addon-notes": "5.3.12",
     "@storybook/addons": "5.3.12",
     "@storybook/react": "5.3.12",
+    "@testing-library/cypress": "5.3.1",
     "@types/classnames": "2.2.8",
     "@types/node": "12.0.4",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
     "@types/react-helmet": "5.0.8",
     "apollo-link-http": "1.5.15",
+    "axe-core": "3.5.2",
     "babel-eslint": "10.0.1",
     "babel-loader": "8.0.6",
     "babel-plugin-module-resolver": "3.2.0",
     "babel-plugin-react-require": "3.1.3",
     "babel-preset-gatsby": "0.2.29",
+    "cypress": "4.1.0",
+    "cypress-axe": "0.5.3",
     "eslint": "5.16.0",
     "eslint-config-prettier": "4.3.0",
     "eslint-config-react-app": "3.0.8",
@@ -124,7 +130,8 @@
     "lint-staged": "10.0.7",
     "prettier": "1.18.2",
     "raw-loader": "2.0.0",
-    "react-markdown": "4.1.0"
+    "react-markdown": "4.1.0",
+    "start-server-and-test": "1.10.9"
   },
   "husky": {
     "hooks": {
